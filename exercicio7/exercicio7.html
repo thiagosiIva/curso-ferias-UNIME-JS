@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 7</title>
+</head>
+<body>
+   
+    
+<div class="container">
+    <div class="row ">
+        <div class="col-md-12">
+            
+            <div id="func"class="row mt-4">
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        const funcionarios = [
+{ nome: "Silvana Santos",
+    filhos: [
+    {nome: "João", idade: 8},
+    {nome: "Maria", idade: 17},
+    {nome: "Mariana", idade: 23}
+    
+    ]
+},
+{
+    nome: "Carlos Peres",
+    filhos:[
+        {nome: "Pedro", idade: 9}
+    ]
+},
+{
+    nome: "Faustina Silva",
+    filhos: []
+}
+]
+        
+        function imprime(obj, string){
+
+const func = document.querySelector('#func')
+        
+obj.forEach((funcionario) =>{
+var array = []
+var array2 = []
+var p = 0
+
+
+
+funcionario.filhos.forEach((qntd)=>{
+  array.push(qntd.idade)
+  array2.push(qntd)
+    
+
+})
+
+array.forEach((idades) =>{
+    if(idades < 10){
+        p+=70
+    }else if(idades>10 && idades<=18){
+        p+=50
+    }
+})
+
+    
+    func.innerHTML += `<div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-info text-white" >${funcionario.nome}</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Total de filhos: ${array.length}</li>
+                                <li>Idade dos filhos: ${(array.length == " " ? "N/A" : `${array}`)} </li>
+                                <li>Bonificavel: ${(array2.length == 0 ?  "Não" : "Sim")}</li>
+                            </ul>
+                    <div class="cad-footer">Total do bônus: ${p}  </div>
+                        </div>
+                    </div>
+                </div> `
+
+           
+})
+
+}
+  </script>
+</body>
+</html>
